@@ -24,9 +24,9 @@ h1{margin:0;font-size:1.35rem;font-weight:800;color:var(--pri)}
 svg{display:block;width:100%;height:auto}
 #mix{transition:fill 1s}
 #fl{transition:opacity 1s}
-.fl{transform-box:fill-box;transform-origin:50% 100%;animation:fk .5s ease-in-out infinite alternate}
+.fl{animation:fk .45s ease-in-out infinite alternate}
 .fl:nth-child(2n){animation-delay:.25s}
-@keyframes fk{to{transform:scale(1.15,1.5)}}
+@keyframes fk{to{opacity:.55}}
 .stir{animation:sw 1.8s ease-in-out infinite;transform-origin:82px 148px}
 @keyframes sw{50%{transform:rotate(-4deg)}}
 #sm path{animation:up 2.4s linear infinite}
@@ -61,12 +61,20 @@ h2{margin:0 0 6px}
 .f i:first-child{border-bottom:2px solid currentColor}
 .m{display:inline-flex;align-items:center;gap:.1em;direction:ltr}
 .ex{direction:ltr;text-align:center;font-weight:800;font-size:1.8rem;margin:4px 0 14px}.sol .ex{font-size:1.25rem;margin:4px 0 0}
+.go,.g button,svg{touch-action:manipulation}
+.pu{animation:pu .7s ease-in-out infinite alternate}@keyframes pu{to{transform:scale(1.3)}}
+.pl{animation:gl .9s ease-in-out infinite alternate}@keyframes gl{to{box-shadow:0 0 0 7px #f4a62a77}}
+.mb{height:18px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:10px}.mb i{display:block;height:100%;background:linear-gradient(90deg,#f4a62a,#e8607a);border-radius:99px}
+.wb{animation:wb .45s}@keyframes wb{40%{transform:translateY(4px)}}
+#bb circle{transform-box:fill-box;animation:bu 1.6s ease-out infinite}#bb circle:nth-child(2){animation-delay:.4s}#bb circle:nth-child(3){animation-delay:.8s}#bb circle:nth-child(4){animation-delay:1.2s}
+@keyframes bu{0%{transform:translateY(0) scale(.4);opacity:0}30%{opacity:.9}100%{transform:translateY(-12px) scale(1.2);opacity:0}}
+button.pill{font:inherit;font-weight:800;color:var(--ink);cursor:pointer}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
 <body>
 <main>
-<header><h1>🍯 صانعة الحلوى العُمانية</h1><div class="pill">⭐ <b id="sc">٠</b></div></header>
+<header><h1>🍯 صانعة الحلوى العُمانية</h1><div style="display:flex;gap:6px"><button class="pill" id="mu" onclick="mute()" aria-label="الصوت">🔊</button><div class="pill">⭐ <b id="sc">٠</b></div></div></header>
 <div id="pr"></div>
 <div class="sc">
 <svg viewBox="0 0 360 250" role="img" aria-label="مطبخ عُماني تقليدي وفتاة بالزي العُماني تصنع الحلوى في قدر نحاسي كبير">
@@ -113,14 +121,14 @@ h2{margin:0 0 6px}
 <circle cx="116" cy="124" r="7" fill="none" stroke="#8a4f22" stroke-width="3.5"/><circle cx="294" cy="124" r="7" fill="none" stroke="#8a4f22" stroke-width="3.5"/>
 <ellipse cx="205" cy="112" rx="83" ry="12" fill="#f0b36e"/>
 <ellipse id="mix" cx="205" cy="113" rx="74" ry="9" fill="#5a3a2b"/>
-<g id="nuts" opacity="0"><ellipse cx="178" cy="113" rx="6" ry="3" fill="#f7e7c4" transform="rotate(-20 178 113)"/><ellipse cx="216" cy="117" rx="6" ry="3" fill="#f7e7c4" transform="rotate(15 216 117)"/><ellipse cx="244" cy="112" rx="6" ry="3" fill="#f7e7c4"/><circle cx="196" cy="118" r="2.6" fill="#8cc34a"/><circle cx="230" cy="108" r="2.6" fill="#8cc34a"/><circle cx="166" cy="116" r="2.6" fill="#8cc34a"/></g>
+<g id="bb" opacity="0" fill="#fff" fill-opacity=".75"><circle cx="165" cy="114" r="3"/><circle cx="195" cy="116" r="2.5"/><circle cx="228" cy="113" r="3"/><circle cx="248" cy="115" r="2.5"/></g><ellipse id="sw" cx="205" cy="113" rx="52" ry="6" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="3" stroke-linecap="round" stroke-dasharray="26 52"/><g id="nuts" opacity="0"><ellipse cx="178" cy="113" rx="6" ry="3" fill="#f7e7c4" transform="rotate(-20 178 113)"/><ellipse cx="216" cy="117" rx="6" ry="3" fill="#f7e7c4" transform="rotate(15 216 117)"/><ellipse cx="244" cy="112" rx="6" ry="3" fill="#f7e7c4"/><circle cx="196" cy="118" r="2.6" fill="#8cc34a"/><circle cx="230" cy="108" r="2.6" fill="#8cc34a"/><circle cx="166" cy="116" r="2.6" fill="#8cc34a"/></g>
 <path d="M140 138q4 16 16 24" stroke="#fff" stroke-opacity=".4" stroke-width="4" fill="none" stroke-linecap="round"/>
 </g>
-<g id="arm" class="stir"><path d="M82 148L112 142" stroke="#17896e" stroke-width="12" stroke-linecap="round"/><path d="M106 143L112 142" stroke="#f4b43a" stroke-width="12" stroke-linecap="round"/><circle cx="117" cy="141" r="5" fill="#f0bf98"/><path d="M117 141L206 117" stroke="#a8683a" stroke-width="5" stroke-linecap="round"/><ellipse cx="208" cy="116" rx="11" ry="5" fill="#a8683a" transform="rotate(-15 208 116)"/></g>
+<g id="arm"><path id="sl" d="M82 148L108 143" stroke="#17896e" stroke-width="12" stroke-linecap="round" fill="none"/><circle id="cf" cx="108" cy="143" r="6.5" fill="#f4b43a"/><circle id="hd" cx="114" cy="142" r="5" fill="#f0bf98"/><path id="pd" d="M114 142L205 113" stroke="#a8683a" stroke-width="5" stroke-linecap="round"/><ellipse id="bl" cx="207" cy="113" rx="11" ry="5" fill="#a8683a"/></g>
 <g id="sm" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0"><path d="M172 98q-8-12 0-24t0-20"/><path d="M205 98q-8-12 0-24t0-20"/><path d="M238 98q-8-12 0-24t0-20"/></g>
-<text id="ing" x="205" y="52" font-size="34" text-anchor="middle" opacity="0"></text>
-<text id="prop" x="322" y="224" font-size="40" text-anchor="middle"></text>
-<g id="trayG" style="display:none" transform="translate(10 16)">
+<text id="ing" x="205" y="52" font-size="34" text-anchor="middle" opacity="0" style="transform-box:fill-box;transform-origin:center"></text>
+<text id="prop" x="322" y="224" font-size="40" text-anchor="middle" style="transform-box:fill-box;transform-origin:center"></text>
+<g id="bub" opacity="0" style="transition:opacity .3s;pointer-events:none"><rect x="92" y="52" width="116" height="32" rx="15" fill="#fff"/><path d="M100 84l-12 14l22-8z" fill="#fff"/><text id="bt" x="150" y="73" font-size="14" font-weight="800" text-anchor="middle" fill="#3b2340"></text></g><g id="fxg" style="pointer-events:none"></g><g id="trayG" style="display:none" transform="translate(10 16)">
 <ellipse cx="195" cy="188" rx="94" ry="16" fill="#aeb6c4"/><ellipse cx="195" cy="185" rx="82" ry="12" fill="#e9edf4"/>
 <path d="M122 184q10-46 73-46t73 46q-73 20-146 0z" fill="url(#hw)"/>
 <ellipse cx="168" cy="152" rx="26" ry="6" fill="#fff" opacity=".28" transform="rotate(-12 168 152)"/>
@@ -149,46 +157,111 @@ let i=0,sc=0,tr=0,lk=0;
 $('pr').innerHTML=S.map(s=>`<span>${s.e}</span>`).join('');
 function mark(){[...$('pr').children].forEach((c,j)=>c.className=j<i?'dn':j==i?'on':'')}
 function pot(k){
- $('mix').style.fill=k?S[k-1].c:'#5a3a2b';
+ CK=k;$('mix').style.fill=k?S[k-1].c:'#5a3a2b';
  $('fl').style.opacity=[0,.4,.7,1,1,1,1][k];
  $('sm').style.opacity=Math.min(1,k*.18);
- $('nuts').style.opacity=k>=5?1:0;
+ $('nuts').style.opacity=k>=5?1:0;$('bb').style.opacity=k>=3?1:0;
  $('prop').textContent=S[k]?S[k].e:'';
 }
 function intro(){
  pot(0);mark();
- $('pn').innerHTML=`<h2>مرحباً بكِ في المطبخ العُماني التقليدي 👋</h2><p>ساعدي منى في صنع الحلوى العُمانية على ${D(S.length)} مراحل. كل إجابة صحيحة في ضرب الكسور تُكمل خطوة من الوصفة، حتى تصبح الحلوى جاهزة للتقديم!</p><button class="go" onclick="start()">ابدئي الطبخ 🍯</button>`;
+ $('pn').innerHTML=`<h2>مرحباً بكِ في المطبخ العُماني التقليدي 👋</h2><p>ساعدي منى في صنع الحلوى العُمانية على ${D(S.length)} مراحل. كل إجابة صحيحة تتيح لكِ سكب المكوّن في القدر، ثم تحريك الحلوى بسرعة (بالضغط على زر التحريك أو على القدر) حتى تنضج وتصبح جاهزة للتقديم!</p><button class="go" onclick="start()">ابدئي الطبخ 🍯</button>`;
 }
 function start(){
- i=0;sc=0;$('sc').textContent=D(0);
+ ac();CK=0;i=0;sc=0;$('sc').textContent=D(0);
  $('trayG').style.display='none';$('potG').style.display='';$('hearth').style.display='';
- $('arm').style.display='';$('arm').classList.add('stir');
+ $('arm').style.display='';say('هيا نبدأ الطبخ! 🍯');
  pot(0);show();
 }
 function show(){
- tr=0;lk=0;mark();const s=S[i];
+ tr=0;lk=0;st=0;mt=0;mark();$('prop').classList.remove('pu');const s=S[i];
  $('pn').innerHTML=`<span class="chip">المرحلة ${D(i+1)} من ${D(S.length)}: ${s.n}</span><p class="d">${s.d}</p><h2 class="q">${F(s.q)}</h2>${s.x?`<div class="ex">${F(s.x)}</div>`:''}<div class="g">${[s.a,...s.o].sort(()=>Math.random()-.5).map(v=>`<button onclick="pick(this,'${v}')">${F(v)}</button>`).join('')}</div><div id="fb"></div>`;
 }
 function pick(b,v){
  if(lk)return;const s=S[i];
  if(v===s.a){
-  lk=1;b.className='ok';sc+=tr?5:10;$('sc').textContent=D(sc);
-  const g=$('ing'),k=i+1;g.textContent=s.e;g.classList.remove('dr');void g.getBoundingClientRect();g.classList.add('dr');
-  setTimeout(()=>pot(k),900);
-  $('fb').innerHTML=`<div class="sol">✅ أحسنتِ! الحل:<div class="ex">${F(s.s)}</div></div><button class="go" onclick="nx()">${i<S.length-1?'المرحلة التالية ⬅':'قدّمي الحلوى 🍯'}</button>`;
+  lk=1;b.className='ok';sc+=tr?5:10;$('sc').textContent=D(sc);sOK();say('أحسنتِ! 🎉');fx('⭐',5);
+  $('prop').classList.add('pu');
+  $('fb').innerHTML=`<div class="sol">✅ الحل:<div class="ex">${F(s.s)}</div></div><button class="go pl" onclick="pour()">${s.e} ${i<S.length-1?'اسكبي في القدر':'قدّمي الحلوى'}</button>`;
  }else{
-  tr=1;b.className='no';b.disabled=true;
+  tr=1;b.className='no';b.disabled=true;sNO();say('جرّبي مرة أخرى 🤔');
   $('fb').innerHTML=`<div class="hint">💡 تلميح: ${F(s.h)}</div>`;
  }
 }
+function pour(){
+ const s=S[i],k=i+1,g=$('ing'),last=i==S.length-1;
+ $('prop').classList.remove('pu');$('fb').innerHTML='';g.textContent=s.e;sWh();
+ g.animate([{transform:'translate(117px,172px) scale(.8)'},{transform:'translate(55px,30px) scale(1.3)',offset:.55},{transform:'translate(0px,62px) scale(.7)'}],{duration:900,easing:'ease-in'}).onfinish=()=>{
+  opacity_fix();splash();
+  if(last){i++;fin()}else{pot(k);stirGame()}
+ };
+}
+function opacity_fix(){}
+function stirGame(){
+ mt=20;st=1;say('حرّكي! 💪');
+ $('fb').innerHTML=`<div class="sol">🌀 حرّكي الحلوى بسرعة قبل أن تلتصق بالقدر!<div class="mb"><i id="mb"></i></div></div><button class="go" onclick="tap()">حرّكي 🌀</button>`;
+}
+function tap(){
+ if(!st)return;mt=Math.min(100,mt+17);sTp();
+ if(mt>=100){st=0;sDone();say('ممم ما أطيبها 😋');fx('✨',8);setTimeout(nx,1100)}
+}
+function splash(){sSp();fx('💦',6);const q=$('potG');q.classList.remove('wb');void q.getBoundingClientRect();q.classList.add('wb')}
+function fx(c,n){
+ const g=$('fxg');
+ for(let j=0;j<n;j++){
+  const t=document.createElementNS('http://www.w3.org/2000/svg','text');
+  t.textContent=c;t.setAttribute('x',205);t.setAttribute('y',105);t.setAttribute('font-size',17);t.setAttribute('text-anchor','middle');g.appendChild(t);
+  const a=Math.random()*6.28,r=40+Math.random()*55;
+  t.animate([{transform:'translate(0px,0px)',opacity:1},{transform:`translate(${Math.cos(a)*r}px,${Math.sin(a)*r-30}px)`,opacity:0}],{duration:800+Math.random()*400}).onfinish=()=>t.remove();
+ }
+}
+function say(t){const b=$('bub');$('bt').textContent=t;b.style.opacity=1;clearTimeout(say.t);say.t=setTimeout(()=>b.style.opacity=0,2300)}
+let AC,NB,SM,MU=0;
+function ac(){
+ if(!AC){AC=new(window.AudioContext||window.webkitAudioContext)();const n=AC.sampleRate*2,b=AC.createBuffer(1,n,AC.sampleRate),d=b.getChannelData(0);
+  for(let j=0;j<n;j++)d[j]=Math.random()*2-1;NB=b;
+  const r=AC.createBufferSource(),f=AC.createBiquadFilter(),g=AC.createGain();r.buffer=NB;r.loop=true;f.type='bandpass';f.frequency.value=2600;f.Q.value=.5;g.gain.value=0;r.connect(f);f.connect(g);g.connect(AC.destination);r.start();SM=g}
+ if(AC.state==='suspended')AC.resume();return AC}
+function tn(f,t=0,d=.15,ty='triangle',v=.12,f2){
+ if(MU)return;const a=ac(),o=a.createOscillator(),g=a.createGain(),s=a.currentTime+t;
+ o.type=ty;o.frequency.setValueAtTime(f,s);if(f2)o.frequency.exponentialRampToValueAtTime(f2,s+d);
+ g.gain.setValueAtTime(v,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g);g.connect(a.destination);o.start(s);o.stop(s+d+.02)}
+function ns(t=0,d=.2,fr=1000,ty='bandpass',v=.15,q=1){
+ if(MU)return;const a=ac(),s=a.currentTime+t,r=a.createBufferSource(),f=a.createBiquadFilter(),g=a.createGain();
+ r.buffer=NB;f.type=ty;f.frequency.value=fr;f.Q.value=q;g.gain.setValueAtTime(v,s);g.gain.exponentialRampToValueAtTime(.001,s+d);
+ r.connect(f);f.connect(g);g.connect(a.destination);r.start(s,Math.random()*1.5);r.stop(s+d+.02)}
+const sOK=()=>{[523,659,784,1047].forEach((f,j)=>tn(f,j*.09,.22,'triangle',.13));tn(1568,.36,.4,'sine',.07);ns(.3,.3,6000,'highpass',.04)};
+const sNO=()=>{tn(260,0,.2,'sawtooth',.08,180);tn(190,.2,.35,'sawtooth',.08,110)};
+const sWh=()=>{tn(400,0,.5,'sine',.05,1100);ns(0,.5,1200,'bandpass',.04,.6)};
+const sSp=()=>{ns(0,.5,2200,'bandpass',.2,.6);tn(260,0,.18,'sine',.2,90);tn(180,.12,.15,'sine',.12,80)};
+const sTp=()=>{tn(170+mt,0,.09,'square',.05,90);ns(0,.08,600,'bandpass',.1,2)};
+const sDone=()=>{[523,659,784,1047,1319].forEach((f,j)=>tn(f,j*.08,.3,'triangle',.13))};
+const sWin=()=>{[523,523,659,784,659,784,1047].forEach((f,j)=>tn(f,j*.13,.25,'triangle',.14));tn(1319,.95,.6,'sine',.1)};
+function mute(){MU=!MU;$('mu').textContent=MU?'🔇':'🔊';if(!MU){ac();sOK()}}
+document.addEventListener('pointerdown',()=>{try{ac()}catch(e){}});
 function nx(){i++;i<S.length?show():fin()}
 function fin(){
- mark();
+ st=0;mt=0;CK=0;mark();say('بالهناء والعافية! 🎉');fx('✨',10);sWin();
  $('potG').style.display='none';$('hearth').style.display='none';$('arm').style.display='none';$('trayG').style.display='';
  $('fl').style.opacity=0;$('sm').style.opacity=0;$('prop').textContent='';
  const mx=S.length*10,t=sc>=mx*.85?3:sc>=mx*.6?2:1;
  $('pn').innerHTML=`<h2>الحلوى العُمانية جاهزة! 🎉</h2><div class="stars">${'⭐'.repeat(t)}</div><p>مجموع نقاطك: <b>${D(sc)}</b> من ${D(mx)}</p><p>${['واصلي التدرّب على ضرب الكسور وستتقنينه قريباً 💪','عمل جميل! أنتِ على الطريق الصحيح 👏','رائع! أتقنتِ ضرب الكسور كطاهية ماهرة 🌟'][t-1]}</p><button class="go" onclick="start()">العبي من جديد</button>`;
 }
+let ph=0,mt=0,st=0,CK=0,lr=0;
+document.querySelector('svg').addEventListener('click',tap);
+(function lp(){
+ ph+=.05+mt*.0022;if(st)mt=Math.max(0,mt-.25);
+ const hx=114+6*Math.cos(ph),hy=142+3*Math.sin(ph),tx=205+46*Math.cos(ph),ty=113+6*Math.sin(ph);
+ $('sl').setAttribute('d',`M82 148L${hx-6} ${hy+1}`);
+ [['cf',hx-6,hy+1],['hd',hx,hy],['bl',tx+2,ty]].forEach(([n,x,y])=>{$(n).setAttribute('cx',x);$(n).setAttribute('cy',y)});
+ $('pd').setAttribute('d',`M${hx} ${hy}L${tx} ${ty}`);
+ $('sw').style.strokeDashoffset=-ph*14;
+ if(AC&&!MU&&CK){const rv=Math.floor(ph/6.283);if(rv!==lr){lr=rv;ns(0,.16,700+mt*8,'bandpass',.05+mt*.0006,.9)}
+  if(Math.random()<.02+mt*.0008+CK*.004)tn(180+Math.random()*260,0,.07,'sine',.07,400+Math.random()*300)}
+ if(SM)SM.gain.value=(MU||!CK)?0:.012*CK+mt*.0004;
+ const m=$('mb');if(m)m.style.width=mt+'%';
+ requestAnimationFrame(lp);
+})();
 intro();
 </script>
 </body>
