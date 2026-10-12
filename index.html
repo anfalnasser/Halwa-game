@@ -14,7 +14,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--ink);font:500 1rem/1.6 Tajawal,system-ui,"Segoe UI",Tahoma,sans-serif;min-height:100vh}
 main{max-width:560px;margin:0 auto;padding:12px}
 header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
-h1{margin:0;font-size:1.35rem;font-weight:800;color:var(--pri)}
+h1{margin:0;font-size:clamp(1rem,4.4vw,1.35rem);font-weight:800;color:var(--pri)}
 .pill{background:var(--card);border:2px solid var(--line);border-radius:99px;padding:2px 14px;font-weight:800;white-space:nowrap}
 #pr{display:flex;gap:5px;margin-bottom:12px}
 #pr span{flex:1;max-width:44px;aspect-ratio:1;display:grid;place-items:center;border-radius:50%;background:var(--card);border:2px solid var(--line);opacity:.5;font-size:1.05rem;transition:.3s}
@@ -69,12 +69,18 @@ h2{margin:0 0 6px}
 #bb circle{transform-box:fill-box;animation:bu 1.6s ease-out infinite}#bb circle:nth-child(2){animation-delay:.4s}#bb circle:nth-child(3){animation-delay:.8s}#bb circle:nth-child(4){animation-delay:1.2s}
 @keyframes bu{0%{transform:translateY(0) scale(.4);opacity:0}30%{opacity:.9}100%{transform:translateY(-12px) scale(1.2);opacity:0}}
 button.pill{font:inherit;font-weight:800;color:var(--ink);cursor:pointer}
+.fg{height:7px;border-radius:6px;margin-bottom:8px;background:linear-gradient(90deg,#fff 0 33.3%,#db161b 33.3% 66.6%,#008000 66.6%);box-shadow:0 0 0 1px var(--line)}
+.tb{display:none;gap:6px;margin-top:12px;flex-wrap:wrap}.tb span{flex:1 1 30%;min-width:0;text-align:center;background:var(--card);border:3px solid var(--c);border-radius:14px;padding:2px 6px;font-weight:800;opacity:.6;transition:.2s}.tb .cur{opacity:1;background:var(--c);color:#fff;transform:scale(1.05)}
+.fa{margin-top:8px;font-size:.92rem;font-weight:700;line-height:1.7}
+.cd{background:#fff1cc;color:#5b4210;border-radius:14px;padding:12px;margin-top:10px;font-weight:700;line-height:1.8}
+.vl{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.vl span{background:#008000;color:#fff;border-radius:99px;padding:2px 12px;font-weight:700;font-size:.9rem}
+.turn{font-weight:800;color:var(--pri);margin-bottom:8px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
 <body>
 <main>
-<header><h1>🍯 صانعة الحلوى العُمانية</h1><div style="display:flex;gap:6px"><button class="pill" id="mu" onclick="mute()" aria-label="الصوت">🔊</button><div class="pill">⭐ <b id="sc">٠</b></div></div></header>
+<div class="fg"></div><header><h1>🇴🇲 صانعة الحلوى العُمانية</h1><div style="display:flex;gap:6px"><button class="pill" id="mu" onclick="mute()" aria-label="الصوت">🔊</button><div class="pill">⭐ <b id="sc">٠</b></div></div></header>
 <div id="pr"></div>
 <div class="sc">
 <svg viewBox="0 0 360 250" role="img" aria-label="مطبخ عُماني تقليدي وفتاة بالزي العُماني تصنع الحلوى في قدر نحاسي كبير">
@@ -91,7 +97,7 @@ button.pill{font:inherit;font-weight:800;color:var(--ink);cursor:pointer}
 <path d="M284 124V62a30 30 0 0 1 60 0v62z" fill="#bfe9f4" stroke="#6b3f22" stroke-width="6"/><circle cx="314" cy="62" r="9" fill="#fff6c8"/><path d="M314 32v92M284 78h60" stroke="#6b3f22" stroke-width="3"/>
 <path d="M118 22h140" stroke="#5a3a22" stroke-width="4" stroke-linecap="round"/><path d="M130 22v14M166 22v8M242 22v12" stroke="#5a3a22" stroke-width="2"/>
 <circle cx="130" cy="46" r="10" fill="url(#cu)"/><circle cx="166" cy="38" r="8" fill="url(#cu)"/><circle cx="242" cy="44" r="9" fill="url(#cu)"/>
-<path d="M12 70V42a17 17 0 0 1 34 0v28z" fill="#7a4b2a"/><path d="M22 70q-3-14 3-20l1-4h8l1 4q6 6 3 20z" fill="#e0a82e"/>
+<path d="M12 70V42a17 17 0 0 1 34 0v28z" fill="#7a4b2a"/><path d="M22 70q-3-14 3-20l1-4h8l1 4q6 6 3 20z" fill="#e0a82e"/><path d="M52 18v36" stroke="#5a3a22" stroke-width="2.5"/><rect x="54" y="20" width="34" height="7.3" fill="#fff"/><rect x="54" y="27.3" width="34" height="7.3" fill="#db161b"/><rect x="54" y="34.6" width="34" height="7.3" fill="#008000"/><rect x="54" y="20" width="9" height="21.9" fill="#db161b"/>
 <rect y="186" width="360" height="64" fill="#c9a25a"/><rect y="186" width="360" height="64" fill="url(#mt)"/><rect y="186" width="360" height="7" fill="#7a4b2a"/>
 <g id="hearth">
 <ellipse cx="205" cy="208" rx="96" ry="8" fill="#000" opacity=".18"/>
@@ -139,21 +145,23 @@ button.pill{font:inherit;font-weight:800;color:var(--ink);cursor:pointer}
 </g>
 </svg>
 </div>
+<div class="tb" id="tb"></div>
 <div class="pn" id="pn"></div>
 </main>
 <script>
 const S=[
-{n:'تجهيز المقادير',e:'🥣',c:'#bfe3ee',d:'نجهّز الأوعية ونقيس المقادير بدقّة.',q:'احسبي ناتج الضرب:',x:'3/4 × 8 = ?',a:'6',o:['3/32','24','2'],h:'اضربي البسط 3 في العدد 8 وأبقي المقام كما هو، ثم اختصري.',s:'3/4 × 8 = 24/4 = 6'},
-{n:'إذابة النشا وإضافة السكر',e:'💧',c:'#efe0a8',d:'نذيب النشا في الماء، ثم نضيف السكر ونحرّك.',q:'احسبي ناتج الضرب:',x:'1/2 × 3/4 = ?',a:'3/8',o:['2/3','3/2','1/8'],h:'اضربي البسط في البسط والمقام في المقام.',s:'1/2 × 3/4 = 3/8'},
+{n:'تجهيز المقادير',e:'🥣',c:'#bfe3ee',d:'نجهّز الأوعية ونقيس المقادير بدقّة.',q:'نجهّز مقادير حلوى العيد. احسبي ناتج الضرب:',x:'3/4 × 8 = ?',a:'6',o:['3/32','24','2'],h:'اضربي البسط 3 في العدد 8 وأبقي المقام كما هو، ثم اختصري.',s:'3/4 × 8 = 24/4 = 6'},
+{n:'إذابة النشا وإضافة السكر',e:'💧',c:'#efe0a8',d:'نذيب النشا في الماء، ثم نضيف السكر ونحرّك.',q:'نذيب النشا والسكر في الماء. احسبي ناتج الضرب:',x:'1/2 × 3/4 = ?',a:'3/8',o:['2/3','3/2','1/8'],h:'اضربي البسط في البسط والمقام في المقام.',s:'1/2 × 3/4 = 3/8'},
 {n:'الطبخ على نار هادئة',e:'🔥',c:'#e3a23c',d:'نخفض النار ونطبخ الخليط ونحرّكه بلا توقف.',q:'لدينا 12 كوباً من الخليط، وطُبخ منه 5/6 حتى الآن. كم كوباً طُبخ؟',a:'10',o:['2','60','5/72'],h:'اقسمي 12 على 6 أولاً، ثم اضربي الناتج في 5.',s:'5/6 × 12 = 60/6 = 10'},
-{n:'إضافة السمن',e:'🧈',c:'#cc7a20',d:'نضيف السمن تدريجياً حتى يلمع الخليط.',q:'نضيف 3/4 كوب سمن، ونستخدم 2/3 منه في الدفعة الأولى. كم كوباً نستخدم؟',a:'1/2',o:['5/7','9/8','1/4'],h:'اضربي البسط في البسط والمقام في المقام، ثم اختصري.',s:'3/4 × 2/3 = 6/12 = 1/2'},
-{n:'التعطير والمكسرات',e:'🌹',c:'#a8481a',d:'نعطّر الحلوى بالهيل والزعفران وماء الورد، ثم نضيف اللوز والفستق.',q:'احسبي الناتج في أبسط صورة:',x:'5/6 × 9/10 = ?',a:'3/4',o:['7/8','25/27','1/2'],h:'اختصري قبل الضرب: 5 مع 10، و9 مع 6.',s:'5/6 × 9/10 = 45/60 = 3/4'},
-{n:'السكب والتقديم',e:'🍯',c:'#8f3a0c',d:'نسكب الحلوى في الصينية ونزيّنها ونقدّمها للضيوف.',q:'تتسع الصينية لـ 8/15 كيلوغرام من الحلوى، وقدّمت منى 5/12 منها للضيوف. كم كيلوغراماً قدّمت؟',a:'2/9',o:['13/27','32/25','1/6'],h:'اختصري 8 مع 12، و5 مع 15 قبل الضرب.',s:'8/15 × 5/12 = 40/180 = 2/9'}
+{n:'إضافة السمن',e:'🧈',c:'#cc7a20',d:'نضيف السمن تدريجياً حتى يلمع الخليط.',q:'نضيف 3/4 كوب من السمن البلدي، ونستخدم 2/3 منه في الدفعة الأولى. كم كوباً نستخدم؟',a:'1/2',o:['5/7','9/8','1/4'],h:'اضربي البسط في البسط والمقام في المقام، ثم اختصري.',s:'3/4 × 2/3 = 6/12 = 1/2'},
+{n:'التعطير والمكسرات',e:'🌹',c:'#a8481a',d:'نعطّر الحلوى بالهيل والزعفران وماء الورد، ثم نضيف اللوز والفستق.',q:'نعطّر الحلوى بماء ورد الجبل الأخضر. احسبي الناتج في أبسط صورة:',x:'5/6 × 9/10 = ?',a:'3/4',o:['7/8','25/27','1/2'],h:'اختصري قبل الضرب: 5 مع 10، و9 مع 6.',s:'5/6 × 9/10 = 45/60 = 3/4'},
+{n:'السكب والتقديم',e:'🍯',c:'#8f3a0c',d:'نسكب الحلوى في الصينية ونزيّنها ونقدّمها للضيوف.',q:'تتسع صينية الضيافة لـ 8/15 كيلوغرام من الحلوى، وقدّمت منى 5/12 منها لضيوف العيد. كم كيلوغراماً قدّمت؟',a:'2/9',o:['13/27','32/25','1/6'],h:'اختصري 8 مع 12، و5 مع 15 قبل الضرب.',s:'8/15 × 5/12 = 40/180 = 2/9'}
 ];
 const $=id=>document.getElementById(id);
 const D=t=>String(t).replace(/\d/g,x=>'٠١٢٣٤٥٦٧٨٩'[x]);
 const F=t=>D(t).replace(/([٠-٩]+)\/([٠-٩]+)/g,'<span class="f"><i>$1</i><i>$2</i></span>');
-let i=0,sc=0,tr=0,lk=0;
+let i=0,sc=0,tr=0,lk=0,NT=1,ts=[0],tm=0;const TN=['المجموعة ١','المجموعة ٢','المجموعة ٣','المجموعة ٤','المجموعة ٥','المجموعة ٦'],TC=['#db161b','#008000','#e8a317','#7a2e78','#1f8a8a','#2f6fdb'];let t0=0;
+function tb(){const e=$('tb');e.style.display=NT>1?'flex':'none';e.innerHTML=TN.slice(0,NT).map((n,j)=>`<span style="--c:${TC[j]}" class="${j==tm?'cur':''}">${n} <b>${D(ts[j])}</b></span>`).join('')}
 $('pr').innerHTML=S.map(s=>`<span>${s.e}</span>`).join('');
 function mark(){[...$('pr').children].forEach((c,j)=>c.className=j<i?'dn':j==i?'on':'')}
 function pot(k){
@@ -164,23 +172,24 @@ function pot(k){
  $('prop').textContent=S[k]?S[k].e:'';
 }
 function intro(){
- pot(0);mark();
- $('pn').innerHTML=`<h2>مرحباً بكِ في المطبخ العُماني التقليدي 👋</h2><p>ساعدي منى في صنع الحلوى العُمانية على ${D(S.length)} مراحل. كل إجابة صحيحة تتيح لكِ سكب المكوّن في القدر، ثم تحريك الحلوى بسرعة (بالضغط على زر التحريك أو على القدر) حتى تنضج وتصبح جاهزة للتقديم!</p><button class="go" onclick="start()">ابدئي الطبخ 🍯</button>`;
+ i=0;st=0;mt=0;pot(0);mark();tb();
+ $('trayG').style.display='none';$('potG').style.display='';$('hearth').style.display='';$('arm').style.display='';
+ $('pn').innerHTML=`<h2>🇴🇲 مرحباً بكِ في بيت الضيافة العُماني</h2><p>الحلوى العُمانية رمز كرم الضيافة وفرحة العيد. حلّي مسائل ضرب الكسور، واسكبي المكوّنات، وحرّكي الحلوى بسرعة حتى تنضج وتُقدَّم للضيوف!</p><p class="d">اختاري طريقة اللعب:</p><div class="g"><button onclick="start(6)">٦ مجموعات</button><button onclick="start(4)">٤ مجموعات</button><button onclick="start(3)">٣ مجموعات</button><button onclick="start(1)">لعب فردي</button></div><p class="d">اختاري طالبة من كل مجموعة لتحلّ سؤالاً، والمجموعة الأعلى نقاطاً تنال لقب «أمهر طاهية» 🏆</p>`;
 }
-function start(){
+function start(n){NT=n||1;ts=Array(NT).fill(0);tm=0;
  ac();CK=0;i=0;sc=0;$('sc').textContent=D(0);
  $('trayG').style.display='none';$('potG').style.display='';$('hearth').style.display='';
  $('arm').style.display='';say('هيا نبدأ الطبخ! 🍯');
  pot(0);show();
 }
 function show(){
- tr=0;lk=0;st=0;mt=0;mark();$('prop').classList.remove('pu');const s=S[i];
- $('pn').innerHTML=`<span class="chip">المرحلة ${D(i+1)} من ${D(S.length)}: ${s.n}</span><p class="d">${s.d}</p><h2 class="q">${F(s.q)}</h2>${s.x?`<div class="ex">${F(s.x)}</div>`:''}<div class="g">${[s.a,...s.o].sort(()=>Math.random()-.5).map(v=>`<button onclick="pick(this,'${v}')">${F(v)}</button>`).join('')}</div><div id="fb"></div>`;
+ tr=0;lk=0;st=0;mt=0;tm=i%NT;t0=Date.now();tb();if(NT>1)say('دور '+TN[tm]);mark();$('prop').classList.remove('pu');const s=S[i];
+ $('pn').innerHTML=`${NT>1?`<div class="turn">🙋 دور ${TN[tm]}: اختاري طالبة لتحلّ السؤال</div>`:''}<span class="chip">المرحلة ${D(i+1)} من ${D(S.length)}: ${s.n}</span><p class="d">${s.d}</p><h2 class="q">${F(s.q)}</h2>${s.x?`<div class="ex">${F(s.x)}</div>`:''}<div class="g">${[s.a,...s.o].sort(()=>Math.random()-.5).map(v=>`<button onclick="pick(this,'${v}')">${F(v)}</button>`).join('')}</div><div id="fb"></div>`;
 }
 function pick(b,v){
  if(lk)return;const s=S[i];
  if(v===s.a){
-  lk=1;b.className='ok';sc+=tr?5:10;$('sc').textContent=D(sc);sOK();say('أحسنتِ! 🎉');fx('⭐',5);
+  lk=1;b.className='ok';const pt=tr?5:10+Math.max(0,5-Math.floor((Date.now()-t0)/6000));sc+=pt;ts[tm]+=pt;tb();$('sc').textContent=D(sc);sOK();say('أحسنتِ! +'+D(pt)+' 🎉');fx('⭐',5);
   $('prop').classList.add('pu');
   $('fb').innerHTML=`<div class="sol">✅ الحل:<div class="ex">${F(s.s)}</div></div><button class="go pl" onclick="pour()">${s.e} ${i<S.length-1?'اسكبي في القدر':'قدّمي الحلوى'}</button>`;
  }else{
@@ -244,8 +253,9 @@ function fin(){
  st=0;mt=0;CK=0;mark();say('بالهناء والعافية! 🎉');fx('✨',10);sWin();
  $('potG').style.display='none';$('hearth').style.display='none';$('arm').style.display='none';$('trayG').style.display='';
  $('fl').style.opacity=0;$('sm').style.opacity=0;$('prop').textContent='';
- const mx=S.length*10,t=sc>=mx*.85?3:sc>=mx*.6?2:1;
- $('pn').innerHTML=`<h2>الحلوى العُمانية جاهزة! 🎉</h2><div class="stars">${'⭐'.repeat(t)}</div><p>مجموع نقاطك: <b>${D(sc)}</b> من ${D(mx)}</p><p>${['واصلي التدرّب على ضرب الكسور وستتقنينه قريباً 💪','عمل جميل! أنتِ على الطريق الصحيح 👏','رائع! أتقنتِ ضرب الكسور كطاهية ماهرة 🌟'][t-1]}</p><button class="go" onclick="start()">العبي من جديد</button>`;
+ const mx=S.length*15,t=sc>=mx*.7?3:sc>=mx*.45?2:1;
+ const w=Math.max(...ts),win=TN.slice(0,NT).filter((n,j)=>ts[j]==w).join(' و ');
+ $('pn').innerHTML=`<h2>الحلوى العُمانية جاهزة! 🎉</h2>${NT>1?`<div class="stars">🏆</div><p style="text-align:center"><b>المجموعة الفائزة: ${win}</b></p>`:`<div class="stars">${'⭐'.repeat(t)}</div><p style="text-align:center">نتيجتك: <b>${D(sc)}</b> من ${D(mx)}</p>`}<div class="cd">🇴🇲 الحلوى العُمانية رمز لكرم الضيافة والاعتزاز بالتراث.<br>لمن ستقدّمين هذه الحلوى؟ وكيف ستحافظين على تراثنا؟</div><div class="vl"><span>كرم الضيافة</span><span>الاعتزاز بالتراث</span><span>التعاون</span></div><button class="go" onclick="intro()">العبي من جديد</button>`;
 }
 let ph=0,mt=0,st=0,CK=0,lr=0;
 document.querySelector('svg').addEventListener('click',tap);
